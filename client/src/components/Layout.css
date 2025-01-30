@@ -1,0 +1,58 @@
+/* 1) Container is full height, flex-column to push footer to the bottom */
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+    /* So we can absolutely position the sidebar */
+}
+
+/* 2) Absolutely-position the sidebar at top-right. 
+        Give it a fixed width/height that matches your design */
+.sidebar-wrapper .navigation {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    top: 1rem;
+    right: 1rem;
+    /* choose a suitable width */
+    /* height: 100px; example if you want a set height, or you can rely on sidebar’s own height */
+}
+
+/* 3) Main content grows and is centered. 
+        margin-right ensures main content doesn't go behind the sidebar */
+.layout-content {
+    flex: 1;
+    /* Grow/shrink to push footer down */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-right: 70px;
+    /* matches the .sidebar-wrapper width */
+}
+
+/* 4) “Sticky” footer, margin-top: auto pushes it to the bottom if the content is short */
+.layout-container>footer {
+    margin-top: auto;
+}
+
+/* RESPONSIVE (if you want to move the sidebar to the top on mobile) */
+@media (max-width: 768px) {
+    .sidebar-wrapper {
+        position: static;
+        /* let it fall back into normal flow at the top */
+        width: auto;
+        text-align: right;
+        /* if you want the content still on the right inside that area */
+        margin-top: 1rem;
+    }
+
+    /* main content no longer needs the margin-right for sidebar */
+    .layout-content {
+        margin-right: 0;
+        margin-top: 1rem;
+    }
+}

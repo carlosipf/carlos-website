@@ -1,0 +1,84 @@
+.social-icons a {
+    text-decoration: none;
+    color: #333;
+}
+
+.social-icons a:hover {
+    color: #666;
+    transform: scale(1.3);
+    transition: all 0.3s ease;
+}
+
+
+/* .social-icons {
+    display: flex;
+    gap: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+} */
+
+
+/* On desktop, fix them to the right edge, vertically */
+/* @media (min-width: 768px) {
+    .social-icons {
+        position: fixed;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        flex-direction: column;
+        background-color: transparent;
+    }
+} */
+
+/* On mobile, pin them to the bottom, horizontally */
+/* @media (max-width: 768px) {
+    .social-icons {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0.5rem 0;
+        background: #fff;
+        border-top: 1px solid #ddd;
+    }
+} */
+
+/* .social-icons a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.social-icons a:hover {
+    color: #666;
+} */
+
+/* Modal overlay styling (if used) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 4px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+}

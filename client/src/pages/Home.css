@@ -1,0 +1,229 @@
+/* -------------------- Main Container -------------------- */
+.home-container {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 15%;
+  margin-right: 15%;
+  /* Prevents wrapping in desktop view */
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+/* -------------------- Sidebar -------------------- */
+.home-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 5%;
+  max-width: 5rem;
+  min-width: 40px;
+  background: #fff;
+  z-index: 10;
+  transition: width 0.5s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* Expand the sidebar on hover */
+.home-sidebar:hover {
+  width: 15%;
+}
+
+.home-sidebar .navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.home-sidebar li {
+  list-style: none;
+  position: relative;
+}
+
+/* -------------------- Left Text Block -------------------- */
+.home-left {
+  flex: 3;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.home-subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.home-bio {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+
+  max-width: 450px;
+}
+
+/* -------------------- Right Block -------------------- */
+.home-right {
+  flex: 2;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 
+   --------------------
+   Photo Container + Photo
+   --------------------
+*/
+.home-photo-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  /* Ensures the zoomed photo stays inside */
+  border-radius: 50%;
+  /* Circular container */
+  aspect-ratio: 1 / 1;
+  /* Keeps a perfect square shape for the container */
+  width: 40vw;
+  /* Proportional width for large screens */
+  max-width: 400px;
+  /* Prevents it from getting too large */
+  min-width: 300px;
+  /* Prevents it from getting too small on desktop */
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 50%);
+}
+
+/* The photo always fills its container */
+.home-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  /* Smooth zoom effect */
+}
+
+/* Zoom + subtle border change on hover */
+.home-photo-container:hover .home-photo {
+  transform: scale(1.2);
+}
+
+.home-photo-container:hover {
+  background: radial-gradient(circle,
+      rgba(255, 255, 255, 0.7) 50%,
+      transparent 50%);
+  transition: background 0.3s ease;
+}
+
+/* -------------------- Social Icons -------------------- */
+.social-icons.horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 10px;
+  color: #666;
+}
+
+/* 
+   --------------------
+   Responsiveness
+   --------------------
+*/
+
+/* ----- Large Tablet / Small Desktop ----- */
+@media (max-width: 1024px) {
+  .home-sidebar {
+    width: 7%;
+  }
+
+  .home-left {
+    flex: 2;
+    padding: 1.5rem;
+  }
+
+  .home-right {
+    flex: 1.5;
+    padding: 1.5rem;
+  }
+
+  /* Adjust container scaling so it doesn't dominate smaller desktops */
+  /* .home-photo-container {
+    width: 40vw;
+    max-width: 300px;
+    min-width: 180px;
+  } */
+}
+
+/* ----- Tablet & below ----- */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Sidebar becomes top bar on mobile */
+  .home-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+    padding: 2rem 0;
+  }
+
+  .home-sidebar .navigation {
+    flex-direction: row;
+    gap: 2.5rem;
+  }
+
+  .home-sidebar li {
+    display: inline-block;
+  }
+
+  .home-left {
+    flex: unset;
+    margin-left: 0;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .home-right {
+    flex: unset;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  /* Let the photo container size itself for mobile */
+  .home-photo-container {
+    width: 40vw;
+    /* Slightly smaller to fit smaller screens */
+    max-width: 80vw;
+    /* Or you could do 100vw, but leave some padding */
+  }
+}

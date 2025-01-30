@@ -1,0 +1,37 @@
+.story-container {
+    /* Center and constrain the content for better readability */
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+
+    /* Set a pleasant font and base color */
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #333;
+
+    /* Vertical spacing between elements */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Headings */
+.story-container h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.story-container h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+}
+
+/* Paragraph styling */
+.story-container p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    text-align: justify;
+    /* Can remove if you prefer left-aligned */
+}

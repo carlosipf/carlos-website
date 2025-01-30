@@ -1,0 +1,88 @@
+.app-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eee;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-links a {
+    color: #333;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: #555;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* semi-transparent black overlay */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    /* so it shows above all other elements */
+}
+
+.modal-content {
+    position: fixed;
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 70vw;
+    max-height: 70vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.modal-content img {
+    max-width: 60vw;
+    max-height: 60vh;
+    width: auto;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: #999;
+    color: #fff;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.modal-close:hover {
+    background: #666;
+}

@@ -1,0 +1,191 @@
+/* Timeline.css */
+
+/* 1) Container for the entire timeline */
+.timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 0;
+
+    /* The floats below need a clear fix */
+}
+
+.timeline-container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* 2) The vertical center line */
+.timeline-container::before {
+    content: "";
+    position: absolute;
+    top: 50px;
+    bottom: 50px;
+    left: 50%;
+    width: 4px;
+    background: #d3d3d3;
+    transform: translateX(-50%);
+}
+
+/* 3) Each timeline item is roughly half width, 
+        floated either left or right. */
+.timeline-item {
+    width: 40%;
+    /* or 48% if you prefer smaller “gap” around the line */
+    margin: 2rem 0;
+    position: relative;
+}
+
+/* STAGGER / ZIGZAG EFFECT on larger screens only */
+@media (min-width: 768px) {
+    .timeline-item:nth-of-type(odd) .timeline-content {
+        margin-top: 2rem;
+    }
+
+    .timeline-item:nth-of-type(even) .timeline-content {
+        margin-bottom: 2rem;
+    }
+}
+
+/* 4) Bubble (content block) styling */
+.timeline-content {
+    background-color: #fff;
+    padding: 1rem 1rem;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.timeline-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* The circle “dot” marker on each item */
+.timeline-content::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    /* tweak vertical alignment */
+    width: 20px;
+    height: 20px;
+    background-color: #3b82f6;
+    /* or your theme color */
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #3b82f6;
+}
+
+/* 5) Left‐side items */
+.timeline-item-left {
+    float: left;
+    clear: left;
+    text-align: left;
+}
+
+.timeline-item-left .timeline-content {
+    margin-right: .5rem;
+    /* space away from center line */
+}
+
+.timeline-item-left .timeline-content::before {
+    right: -36px;
+    /* circle must sit exactly on the center line */
+}
+
+/* 6) Right‐side items */
+.timeline-item-right {
+    float: right;
+    clear: right;
+    text-align: left;
+}
+
+.timeline-item-right .timeline-content {
+    margin-left: .5rem;
+}
+
+.timeline-item-right .timeline-content::before {
+    left: -36px;
+}
+
+/* 7) Typical styling for your heading, subheading, etc. */
+.timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.timeline-icon {
+    font-size: 1.5rem;
+}
+
+.timeline-title {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.timeline-subtitle {
+    margin: 0.25rem 0;
+    font-weight: 500;
+    color: #555;
+}
+
+.timeline-dates {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.timeline-location {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.timeline-description {
+    margin: 0.75rem 0 0;
+    line-height: 1.4;
+    color: #444;
+}
+
+/* 8) Responsive layout: stack everything in a single column on small screens */
+@media (max-width: 768px) {
+
+    /* Pin the timeline line near the left. */
+    .timeline-container::before {
+        left: 1rem;
+        /* how far from the left edge */
+        transform: none;
+    }
+
+    /* Make each item full width and remove floats. */
+    .timeline-item {
+        width: 100%;
+        float: none;
+        clear: both;
+        margin: 2rem 0;
+        /* If you prefer items to appear left-to-right, use text-align: left;
+         But we’ll keep them aligned “naturally,” as the line is on left. */
+    }
+
+    /* Force the bubble to appear to the right of the vertical line. */
+    .timeline-item-left .timeline-content,
+    .timeline-item-right .timeline-content {
+        margin-left: 3rem;
+        /* Enough space to clear the dot & line on the left */
+        margin-right: 1rem;
+        /* optional - add if you want right spacing */
+    }
+
+    /* Ensure the dot also stays on that line. */
+    .timeline-content::before {
+        left: -42px !important;
+        /* The same offset you use on desktop for left items. */
+        right: auto !important;
+    }
+}
